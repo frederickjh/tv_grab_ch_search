@@ -89,7 +89,7 @@ use strict;
 use DateTime;
 use LWP::Simple;
 use HTTP::Cookies;
-use XMLTV::Version '$Id: tv_grab_ch_search.in,v 1.18 2012/10/24 08:17:11 betlit Exp $ ';
+use XMLTV::Version '$Id: tv_grab_ch_search,v develop frederickjh github.com Exp $ ';
 use XMLTV::Capabilities qw/baseline manualconfig cache/;
 use XMLTV::Description 'Switzerland (tv.search.ch)';
 use XMLTV::Supplement qw/GetSupplement/;
@@ -421,7 +421,7 @@ sub grab_channels
       )->strftime( "%Y%m%d%H%M%S %z" );
 
      $tmp  = $tv_show->as_HTML();
-     if ( $tmp =~ /Untertitel für Gehörlose/)
+     if ( $tmp =~ /Untertitel fÃ¼r GehÃ¶rlose/)
      {
       $show{subtitles} = [{ type => 'teletext' }];
      }
@@ -528,7 +528,7 @@ if($channel_id  =~ /tv_nickch/)
        {
         $description = (($desc->look_down('_tag', 'td'))->as_text());
         $description =~ s/ mehr... / /;
-        $description =~ s/Folge verpasst(.*)voller Länge zum kostenlosen Abruf bereit\.//;
+        $description =~ s/Folge verpasst(.*)voller LÃ¤nge zum kostenlosen Abruf bereit\.//;
         
        }
 
